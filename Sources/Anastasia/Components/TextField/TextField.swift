@@ -7,6 +7,55 @@
 
 import SwiftUI
 
+public struct AnastasiaSecureField: View {
+  private let title: String
+  @Binding private var text: String
+  @State private var isSecured: Bool
+  private let prefix: Image
+  
+  init(
+    _ title: String,
+    text: Binding<String>,
+    isSecured: Bool = true,
+    prefix: Image = Image(systemName: "lock")
+  ) {
+    self.title = title
+    self.isSecured = isSecured
+    self._text = text
+    self.prefix = prefix
+  }
+  
+  public var body: some View {
+    Group {
+      if isSecured {
+        SecureField(title, text: _text)
+          .textFieldStyle(
+            AnastasiaTextFieldStyle(
+              prefix: prefix,
+              suffix: Button(action: {
+                isSecured = false
+              }, label: {
+                Image(systemName: "eye.slash")
+              })
+            )
+          )
+      } else {
+        TextField(title, text: _text)
+          .textFieldStyle(
+            AnastasiaTextFieldStyle(
+              prefix: prefix,
+              suffix: Button(action: {
+                isSecured = true
+              }, label: {
+                Image(systemName: "eye")
+              })
+            )
+          )
+      }
+    }
+  }
+}
+
 public struct AnastasiaTextFieldStyle<Prefix: View, Suffix: View>: TextFieldStyle {
   private let keyboardType: UIKeyboardType
   @ViewBuilder private let prefix: Prefix
@@ -32,9 +81,11 @@ public struct AnastasiaTextFieldStyle<Prefix: View, Suffix: View>: TextFieldStyl
       
       HStack {
         prefix
+          .foregroundColor(.Anastasia.primaryTextColor)
         configuration
           .keyboardType(keyboardType)
         suffix
+          .foregroundColor(.Anastasia.primaryTextColor)
       }
       .padding(.vertical, Spacing.medium)
       .padding(.horizontal, Spacing.large)
@@ -44,51 +95,48 @@ public struct AnastasiaTextFieldStyle<Prefix: View, Suffix: View>: TextFieldStyl
 }
 
 struct TextField_Previews: PreviewProvider {
-    static var previews: some View {
-      VStack(spacing: Spacing.extraLarge) {
-        Text("Sign In")
-          .font(.Anastasia.display1)
-          .foregroundColor(.Anastasia.primaryTextColor)
-        
-        VStack {
-          TextField("Anastasia TextField", text: .constant(""))
-            .textFieldStyle(
-              AnastasiaTextFieldStyle(prefix: Image(systemName: "envelope"))
-            )
-          SecureField("Anastasia TextField", text: .constant(""))
-            .textFieldStyle(
-              AnastasiaTextFieldStyle(
-                prefix: Image(systemName: "lock"),
-                suffix: Image(systemName: "eye.slash")
-              )
-            )
-        }
-        
-        VStack(alignment: .leading) {
-          Text("I agree to the term and condition")
-            .font(.Anastasia.caption)
-            .foregroundColor(.Anastasia.secondaryTextColor)
-          
-          Button {
-
-          } label: {
-            Text("Login")
-              .font(.Anastasia.body1.weight(.bold))
-              .frame(maxWidth: .infinity, maxHeight: 32)
-          }
-          .buttonStyle(.anastasiaPrimary)
-          
-          Button {
-
-          } label: {
-            Text("Register")
-              .font(.Anastasia.body1.weight(.bold))
-              .frame(maxWidth: .infinity, maxHeight: 32)
-          }
-          .buttonStyle(.anastasiaLink)
-        }
+  static var previews: some View {
+    VStack(spacing: Spacing.extraLarge) {
+      Text("Sign In")
+        .font(.Anastasia.display1)
+        .foregroundColor(.Anastasia.primaryTextColor)
+      
+      VStack {
+        TextField("Anastasia TextField", text: .constant(""))
+          .textFieldStyle(
+            AnastasiaTextFieldStyle(prefix: Image(systemName: "envelope"))
+          )
+        AnastasiaSecureField(
+          "Anastasia TextField",
+          text: .constant("Password")
+        )
       }
-      .padding(Spacing.extraLarge)
-      .previewLayout(.sizeThatFits)
+      
+      VStack(alignment: .leading) {
+        Text("I agree to the term and condition")
+          .font(.Anastasia.caption)
+          .foregroundColor(.Anastasia.secondaryTextColor)
+        
+        Button {
+
+        } label: {
+          Text("Login")
+            .font(.Anastasia.body1.weight(.bold))
+            .frame(maxWidth: .infinity, maxHeight: 32)
+        }
+        .buttonStyle(.anastasiaPrimary)
+        
+        Button {
+
+        } label: {
+          Text("Register")
+            .font(.Anastasia.body1.weight(.bold))
+            .frame(maxWidth: .infinity, maxHeight: 32)
+        }
+        .buttonStyle(.anastasiaLink)
+      }
     }
+    .padding(Spacing.extraLarge)
+    .previewLayout(.sizeThatFits)
+  }
 }
