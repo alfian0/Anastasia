@@ -113,9 +113,12 @@ struct TextField_Previews: PreviewProvider {
       }
       
       VStack(alignment: .leading) {
-        Text("I agree to the term and condition")
-          .font(.Anastasia.caption)
-          .foregroundColor(.Anastasia.secondaryTextColor)
+        Toggle(isOn: .constant(true)) {
+          Text("I agree to the term and condition")
+            .font(.Anastasia.caption)
+            .foregroundColor(.Anastasia.secondaryTextColor)
+        }
+        .toggleStyle(.anastasiaPrimary)
         
         Button {
 
