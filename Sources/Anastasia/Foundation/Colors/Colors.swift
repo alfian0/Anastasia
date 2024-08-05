@@ -26,16 +26,16 @@ public extension Color {
     // ColorError
     static let errorColor = Color(.systemRed)
     
-    public static let buttonPrimaryBackground = Color.Anastasia.accentColor
-    public static let buttonPrimarySubtleBackground = Color.Anastasia.accentColor.opacity(0.5)
+    public static let buttonPrimaryBackground = accentColor
+    public static let buttonPrimarySubtleBackground = accentColor.opacity(0.5)
     
-    public static let buttonSecondaryForeground = Color.Anastasia.primaryTextColor
-    public static let buttonSecondaryBackground = Color.Anastasia.surfaceColor
+    public static let buttonSecondaryForeground = primaryTextColor
+    public static let buttonSecondaryBackground = surfaceColor
     
-    public static let buttonLinkSecondaryForeground = Color.Anastasia.accentColor
+    public static let buttonLinkSecondaryForeground = accentColor
     public static let buttonLinkSecondaryBackground = Color.white.opacity(0)
     
-    public static let buttonCriticalBackground = Color.Anastasia.errorColor
-    public static let buttonCriticalSubtleBackground = Color.Anastasia.errorColor.opacity(0.5)
+    public static let buttonCriticalBackground = errorColor
+    public static let buttonCriticalSubtleBackground = errorColor.opacity(0.5)
   }
 }

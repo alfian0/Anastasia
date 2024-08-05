@@ -17,6 +17,18 @@ public extension UIColor {
     static let backgroundColor = fromResource(named: "backgroundColor")
     static let surfaceColor = UIColor.systemBackground
     static let errorColor = UIColor.systemRed
+    
+    public static let buttonPrimaryBackground = accentColor
+    public static let buttonPrimarySubtleBackground = accentColor.withAlphaComponent(0.5)
+    
+    public static let buttonSecondaryForeground = primaryTextColor
+    public static let buttonSecondaryBackground = surfaceColor
+    
+    public static let buttonLinkSecondaryForeground = accentColor
+    public static let buttonLinkSecondaryBackground = UIColor.white.withAlphaComponent(0.5)
+    
+    public static let buttonCriticalBackground = errorColor
+    public static let buttonCriticalSubtleBackground = errorColor.withAlphaComponent(0.5)
   }
 }
 
