@@ -118,7 +118,7 @@ struct TextField_Previews: PreviewProvider {
             .font(.Anastasia.caption)
             .foregroundColor(.Anastasia.secondaryTextColor)
         }
-        .toggleStyle(.anastasiaPrimary)
+        .toggleStyle(.anastasiaCheckbox)
         
         Button {
 
