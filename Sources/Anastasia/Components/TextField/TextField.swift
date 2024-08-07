@@ -114,7 +114,7 @@ struct TextField_Previews: PreviewProvider {
       
       VStack(alignment: .leading) {
         Toggle(isOn: .constant(true)) {
-          BodyText(type: .body2, text: "I agree to the term and condition")
+          BodyText(type: .body2(scale: .small), text: "I agree to the term and condition")
             .foregroundColor(.Anastasia.secondaryTextColor)
         }
         .toggleStyle(.anastasiaCheckbox)

@@ -69,7 +69,7 @@ struct Sample_Previews: PreviewProvider {
           HeadlineText(type: .h2, text: "Spring Styles")
         }
         
-        BodyText(type: .body1, text: "In publishing and graphic design, Lorem ipsum (/ˌlɔː.rəm ˈɪp.səm/) is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available. It is also used to temporarily replace text in a process called greeking, which allows designers to consider the form of a webpage or publication, without the meaning of the text influencing the design.")
+        BodyText(type: .body1(scale: .large), text: "In publishing and graphic design, Lorem ipsum (/ˌlɔː.rəm ˈɪp.səm/) is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available. It is also used to temporarily replace text in a process called greeking, which allows designers to consider the form of a webpage or publication, without the meaning of the text influencing the design.")
         
         Button {
 
@@ -100,7 +100,7 @@ struct Sample_Previews: PreviewProvider {
               
               HeadlineText(type: .h5, text: "Headline 5")
               
-              BodyText(type: .body2, text: "Body 2")
+              BodyText(type: .body2(scale: .small), text: "Body 2")
               
               HStack {
                 Stepper {
@@ -130,7 +130,7 @@ struct Sample_Previews: PreviewProvider {
               
               HeadlineText(type: .h5, text: "Headline 5")
               
-              BodyText(type: .body2, text: "Body 2")
+              BodyText(type: .body2(scale: .small), text: "Body 2")
               
               HStack {
                 Stepper {

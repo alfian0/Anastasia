@@ -59,9 +59,9 @@ struct Font_Previews: PreviewProvider {
         }
         
         VStack {
-          BodyText(type: .body1, text: "Body 1")
+          BodyText(type: .body1(scale: .small), text: "Body 1")
           
-          BodyText(type: .body2, text: "Body 2")
+          BodyText(type: .body2(scale: .small), text: "Body 2")
         }
         
         ButtonText(text: "Button".uppercased())
