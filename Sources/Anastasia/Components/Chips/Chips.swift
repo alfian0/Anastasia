@@ -70,8 +70,8 @@ public struct Chips: View {
           }
         }
         .padding(.vertical, Spacing.medium)
-        .padding(.leading, (type == .suggestion ) ? Spacing.medium : Spacing.small)
-        .padding(.trailing, Spacing.medium)
+        .padding(.leading, (type == .input ) ? Spacing.medium : (type == .suggestion ) ? Spacing.medium : Spacing.small)
+        .padding(.trailing, (type == .input ) ? Spacing.small : Spacing.medium)
       }
       .fixedSize(horizontal: true, vertical: true)
     }
@@ -85,19 +85,19 @@ public struct Chips: View {
 struct Chips_Previews: PreviewProvider {
     static var previews: some View {
       VStack {
-        Chips(type: .assist(systemName: "heart"), text: "Hear") { _ in
+        Chips(type: .assist(systemName: "heart"), text: "Heart") { _ in
           
         }
         
-        Chips(type: .input, text: "Hear") { _ in
+        Chips(type: .input, text: "Heart") { _ in
           
         }
         
-        Chips(type: .filter, text: "Hear") { _ in
+        Chips(type: .filter, text: "Heart") { _ in
           
         }
         
-        Chips(type: .suggestion, text: "Hear") { _ in
+        Chips(type: .suggestion, text: "Heart") { _ in
           
         }
       }
