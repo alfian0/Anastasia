@@ -50,22 +50,22 @@ public struct Chips: View {
             Image(systemName: systemName)
               .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
             
-            Text(text)
+            ButtonText(text: text)
               .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
           case .filter:
             Image(systemName: "checkmark")
               .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
             
-            Text(text)
+            ButtonText(text: text)
               .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
           case .input:
-            Text(text)
+            ButtonText(text: text)
               .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
             
             Image(systemName: "xmark")
               .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
           default:
-            Text(text)
+            ButtonText(text: text)
               .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
           }
         }

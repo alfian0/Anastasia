@@ -8,14 +8,14 @@
 import SwiftUI
 
 public struct OverlineText: View {
-  let text: String
+  let text: LocalizedStringKey
   
-  public init(text: String) {
+  public init(text: LocalizedStringKey) {
     self.text = text
   }
   
   public var body: some View {
-    Text(text.uppercased())
+    Text(text)
       .font(.Anastasia.overline)
       .kerning(1.5)
   }

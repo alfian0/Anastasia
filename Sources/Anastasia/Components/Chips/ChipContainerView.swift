@@ -59,6 +59,7 @@ public struct ChipContainerView: View {
             }
         }
       }
+      .fixedSize(horizontal: true, vertical: true)
     }
   }
 }

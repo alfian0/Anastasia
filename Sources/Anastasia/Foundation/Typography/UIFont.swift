@@ -64,7 +64,7 @@ struct Font_Previews: PreviewProvider {
           BodyText(type: .body2(scale: .small), text: "Body 2")
         }
         
-        ButtonText(text: "Button".uppercased())
+        ButtonText(text: "Button")
         
         CaptionText(text: "Caption")
         

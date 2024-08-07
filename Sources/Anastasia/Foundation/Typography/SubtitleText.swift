@@ -32,9 +32,9 @@ public struct SubtitleText: View {
   }
   
   let type: SubtitleType
-  let text: String
+  let text: LocalizedStringKey
   
-  public init(type: SubtitleType, text: String) {
+  public init(type: SubtitleType, text: LocalizedStringKey) {
     self.type = type
     self.text = text
   }

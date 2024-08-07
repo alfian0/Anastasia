@@ -70,12 +70,18 @@ struct Sample_Previews: PreviewProvider {
           HeadlineText(type: .h2, text: "Spring Styles")
         }
         
-        BodyText(type: .body1(scale: .large), text: "In publishing and graphic design, Lorem ipsum (/ˌlɔː.rəm ˈɪp.səm/) is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available. It is also used to temporarily replace text in a process called greeking, which allows designers to consider the form of a webpage or publication, without the meaning of the text influencing the design.")
+        BodyText(type: .body1(scale: .large), text: "In publishing and graphic design, Lorem ipsum (/ˌlɔː.rəm ˈɪp.səm/) is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.")
+        
+        ChipContainerView(models: [
+          ChipModel(type: .assist(systemName: "airplane"), titleKey: "airplane", isSelected: false),
+          ChipModel(type: .filter, titleKey: "share", isSelected: false),
+          ChipModel(type: .input, titleKey: "heart", isSelected: false)
+        ])
         
         Button {
 
         } label: {
-          ButtonText(text: "Login".uppercased())
+          ButtonText(text: "Login")
             .frame(maxWidth: .infinity, maxHeight: 32)
         }
         .buttonStyle(.anastasiaPrimary)

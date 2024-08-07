@@ -8,9 +8,9 @@
 import SwiftUI
 
 public struct CaptionText: View {
-  let text: String
+  let text: LocalizedStringKey
   
-  public init(text: String) {
+  public init(text: LocalizedStringKey) {
     self.text = text
   }
   

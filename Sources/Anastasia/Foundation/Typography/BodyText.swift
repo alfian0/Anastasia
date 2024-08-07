@@ -46,9 +46,9 @@ public struct BodyText: View {
   }
   
   let type: BodyType
-  let text: String
+  let text: LocalizedStringKey
   
-  public init(type: BodyType, text: String) {
+  public init(type: BodyType, text: LocalizedStringKey) {
     self.type = type
     self.text = text
   }

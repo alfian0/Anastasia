@@ -52,9 +52,9 @@ public struct HeadlineText: View {
   }
   
   let type: HeadlineType
-  let text: String
+  let text: LocalizedStringKey
   
-  public init(type: HeadlineType, text: String) {
+  public init(type: HeadlineType, text: LocalizedStringKey) {
     self.type = type
     self.text = text
   }
