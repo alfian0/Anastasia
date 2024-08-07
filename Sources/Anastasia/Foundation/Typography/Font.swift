@@ -61,7 +61,7 @@ struct Sample_Previews: PreviewProvider {
       Image(systemName: "photo")
         .frame(maxWidth: .infinity)
         .frame(height: 100)
-        .background(Color.Anastasia.surfaceColor)
+        .background(Color.Anastasia.imagePrimaryBackground)
       
       VStack(alignment: .leading, spacing: Spacing.large) {
         VStack(alignment: .leading, spacing: 0) {
@@ -91,7 +91,7 @@ struct Sample_Previews: PreviewProvider {
             VStack {
               Image(systemName: "photo")
                 .frame(width: 100, height: 100)
-                .background(Color.Anastasia.surfaceColor)
+                .background(Color.Anastasia.imagePrimaryBackground)
               
               CaptionText(text: "Caption")
             }
@@ -121,7 +121,7 @@ struct Sample_Previews: PreviewProvider {
             VStack {
               Image(systemName: "photo")
                 .frame(width: 100, height: 100)
-                .background(Color.Anastasia.surfaceColor)
+                .background(Color.Anastasia.imagePrimaryBackground)
               
               CaptionText(text: "Caption")
             }

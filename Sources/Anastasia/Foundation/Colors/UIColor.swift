@@ -9,15 +9,15 @@ import UIKit
 
 public extension UIColor {
   struct Anastasia {
-    static let primaryColor = fromResource(named: "primaryColor")
-    static let colorOnPrimary = fromResource(named: "colorOnPrimary")
-    static let primaryDarkColor = fromResource(named: "primaryDarkColor")
-    static let accentColor = fromResource(named: "accentColor")
-    static let primaryTextColor = UIColor.label
-    static let secondaryTextColor = UIColor.secondaryLabel
-    static let backgroundColor = fromResource(named: "backgroundColor")
-    static let surfaceColor = UIColor.systemBackground
-    static let errorColor = UIColor.systemRed
+    private static let primaryColor = fromResource(named: "primaryColor")
+    private static let colorOnPrimary = fromResource(named: "colorOnPrimary")
+    private static let primaryDarkColor = fromResource(named: "primaryDarkColor")
+    private static let accentColor = fromResource(named: "accentColor")
+    private static let primaryTextColor = UIColor.label
+    private static let secondaryTextColor = UIColor.secondaryLabel
+    private static let backgroundColor = fromResource(named: "backgroundColor")
+    private static let surfaceColor = UIColor.systemGray6
+    private static let errorColor = UIColor.systemRed
     
     public static let buttonPrimaryBackground = accentColor
     public static let buttonPrimarySubtleBackground = accentColor.withAlphaComponent(0.5)
@@ -33,6 +33,13 @@ public extension UIColor {
     
     public static let navBarPrimaryBackground = primaryColor
     public static let navBarPrimaryForeground = colorOnPrimary
+    
+    public static let imagePrimaryBackground = surfaceColor
+    
+    public static let togglePrimaryBackground = primaryColor
+    
+    public static let textPrimaryForeground = primaryTextColor
+    public static let textSecondaryForeground = secondaryTextColor
   }
 }
 

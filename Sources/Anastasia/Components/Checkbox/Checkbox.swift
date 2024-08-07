@@ -25,7 +25,7 @@ public struct AnastasiaToggleStyle: ToggleStyle {
     }, label: {
       HStack(alignment: .top) {
         Image(systemName: configuration.isOn ? isOnImage : isOffImage)
-          .foregroundColor(.Anastasia.accentColor)
+          .foregroundColor(.Anastasia.togglePrimaryBackground)
         configuration.label
           .multilineTextAlignment(.leading)
       }
@@ -46,13 +46,13 @@ struct Checkbox_Previews: PreviewProvider {
           Toggle(isOn: .constant(true)) {
             Text("I agree to the term and condition")
               .font(.Anastasia.caption)
-              .foregroundColor(.Anastasia.secondaryTextColor)
+              .foregroundColor(.Anastasia.textSecondaryForeground)
           }
           .toggleStyle(.anastasiaRadioButton)
           Toggle(isOn: .constant(false)) {
             Text("I agree to the term and condition")
               .font(.Anastasia.caption)
-              .foregroundColor(.Anastasia.secondaryTextColor)
+              .foregroundColor(.Anastasia.textSecondaryForeground)
           }
           .toggleStyle(.anastasiaRadioButton)
         }
@@ -60,13 +60,13 @@ struct Checkbox_Previews: PreviewProvider {
           Toggle(isOn: .constant(true)) {
             Text("I agree to the term and condition")
               .font(.Anastasia.caption)
-              .foregroundColor(.Anastasia.secondaryTextColor)
+              .foregroundColor(.Anastasia.textSecondaryForeground)
           }
           .toggleStyle(.anastasiaCheckbox)
           Toggle(isOn: .constant(false)) {
             Text("I agree to the term and condition")
               .font(.Anastasia.caption)
-              .foregroundColor(.Anastasia.secondaryTextColor)
+              .foregroundColor(.Anastasia.textSecondaryForeground)
           }
           .toggleStyle(.anastasiaCheckbox)
         }

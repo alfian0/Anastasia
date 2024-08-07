@@ -9,37 +9,26 @@ import SwiftUI
 
 public extension Color {
   struct Anastasia {
-    // ColorPrimary
-    static let primaryColor = Color("primaryColor", bundle: .module)
-    static let colorOnPrimary = Color("colorOnPrimary", bundle: .module)
-    // ColorPrimaryDark
-    static let primaryDarkColor = Color("primaryDarkColor", bundle: .module)
-    // ColorAccent
-    static let accentColor = Color("accentColor", bundle: .module)
-    // TextColorPrimary
-    static let primaryTextColor = Color(.label)
-    // TextColorSecondary
-    static let secondaryTextColor = Color(.secondaryLabel)
-    // ColorBackground
-    static let backgroundColor = Color("backgroundColor", bundle: .module)
-    // ColorSurface
-    static let surfaceColor = Color(UIColor.systemGroupedBackground)
-    // ColorError
-    static let errorColor = Color(.systemRed)
+    public static let buttonPrimaryBackground = Color(UIColor.Anastasia.buttonPrimaryBackground)
+    public static let buttonPrimarySubtleBackground = Color(UIColor.Anastasia.buttonPrimarySubtleBackground)
     
-    public static let buttonPrimaryBackground = accentColor
-    public static let buttonPrimarySubtleBackground = accentColor.opacity(0.5)
+    public static let buttonSecondaryForeground = Color(UIColor.Anastasia.buttonSecondaryForeground)
+    public static let buttonSecondaryBackground = Color(UIColor.Anastasia.buttonSecondaryBackground)
     
-    public static let buttonSecondaryForeground = primaryTextColor
-    public static let buttonSecondaryBackground = surfaceColor
+    public static let buttonLinkSecondaryForeground = Color(UIColor.Anastasia.buttonLinkSecondaryForeground)
+    public static let buttonLinkSecondaryBackground = Color(UIColor.Anastasia.buttonLinkSecondaryBackground)
     
-    public static let buttonLinkSecondaryForeground = accentColor
-    public static let buttonLinkSecondaryBackground = Color.white.opacity(0)
+    public static let buttonCriticalBackground = Color(UIColor.Anastasia.buttonCriticalBackground)
+    public static let buttonCriticalSubtleBackground = Color(UIColor.Anastasia.buttonCriticalSubtleBackground)
     
-    public static let buttonCriticalBackground = errorColor
-    public static let buttonCriticalSubtleBackground = errorColor.opacity(0.5)
+    public static let navBarPrimaryBackground = Color(UIColor.Anastasia.navBarPrimaryBackground)
+    public static let navBarPrimaryForeground = Color(UIColor.Anastasia.navBarPrimaryForeground)
     
-    public static let navBarPrimaryBackground = primaryColor
-    public static let navBarPrimaryForeground = colorOnPrimary
+    public static let imagePrimaryBackground = Color(UIColor.Anastasia.imagePrimaryBackground)
+    
+    public static let togglePrimaryBackground = Color(UIColor.Anastasia.togglePrimaryBackground)
+    
+    public static let textPrimaryForeground = Color(UIColor.Anastasia.textPrimaryForeground)
+    public static let textSecondaryForeground = Color(UIColor.Anastasia.textSecondaryForeground)
   }
 }

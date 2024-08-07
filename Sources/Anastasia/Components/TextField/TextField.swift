@@ -81,11 +81,11 @@ public struct AnastasiaTextFieldStyle<Prefix: View, Suffix: View>: TextFieldStyl
       
       HStack {
         prefix
-          .foregroundColor(.Anastasia.primaryTextColor)
+          .foregroundColor(.Anastasia.textPrimaryForeground)
         configuration
           .keyboardType(keyboardType)
         suffix
-          .foregroundColor(.Anastasia.primaryTextColor)
+          .foregroundColor(.Anastasia.textPrimaryForeground)
       }
       .padding(.vertical, Spacing.medium)
       .padding(.horizontal, Spacing.large)
@@ -99,7 +99,7 @@ struct TextField_Previews: PreviewProvider {
     VStack(spacing: Spacing.extraLarge) {
       Text("Sign In")
         .font(.Anastasia.headline2)
-        .foregroundColor(.Anastasia.primaryTextColor)
+        .foregroundColor(.Anastasia.textPrimaryForeground)
       
       VStack {
         TextField("Anastasia TextField", text: .constant(""))
@@ -115,7 +115,7 @@ struct TextField_Previews: PreviewProvider {
       VStack(alignment: .leading) {
         Toggle(isOn: .constant(true)) {
           BodyText(type: .body2(scale: .small), text: "I agree to the term and condition")
-            .foregroundColor(.Anastasia.secondaryTextColor)
+            .foregroundColor(.Anastasia.textPrimaryForeground)
         }
         .toggleStyle(.anastasiaCheckbox)
         
