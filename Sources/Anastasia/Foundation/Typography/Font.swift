@@ -38,10 +38,11 @@ struct Sample_Previews: PreviewProvider {
   static var previews: some View {
     VStack(spacing: Spacing.medium) {
       ZStack {
-        Color.Anastasia.primaryColor
+        Color.Anastasia.navBarPrimaryBackground
         
         HStack {
           HeadlineText(type: .h6, text: "Headline 6")
+            .foregroundColor(.Anastasia.navBarPrimaryForeground)
           
           Spacer()
           
@@ -49,7 +50,7 @@ struct Sample_Previews: PreviewProvider {
             
           } label: {
             Image(systemName: "magnifyingglass")
-              .foregroundColor(.Anastasia.primaryTextColor)
+              .foregroundColor(.Anastasia.navBarPrimaryForeground)
           }
         }
         .padding()

@@ -11,6 +11,7 @@ public extension Color {
   struct Anastasia {
     // ColorPrimary
     static let primaryColor = Color("primaryColor", bundle: .module)
+    static let colorOnPrimary = Color("colorOnPrimary", bundle: .module)
     // ColorPrimaryDark
     static let primaryDarkColor = Color("primaryDarkColor", bundle: .module)
     // ColorAccent
@@ -37,5 +38,8 @@ public extension Color {
     
     public static let buttonCriticalBackground = errorColor
     public static let buttonCriticalSubtleBackground = errorColor.opacity(0.5)
+    
+    public static let navBarPrimaryBackground = primaryColor
+    public static let navBarPrimaryForeground = colorOnPrimary
   }
 }

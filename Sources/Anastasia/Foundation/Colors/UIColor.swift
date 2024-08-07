@@ -10,6 +10,7 @@ import UIKit
 public extension UIColor {
   struct Anastasia {
     static let primaryColor = fromResource(named: "primaryColor")
+    static let colorOnPrimary = fromResource(named: "colorOnPrimary")
     static let primaryDarkColor = fromResource(named: "primaryDarkColor")
     static let accentColor = fromResource(named: "accentColor")
     static let primaryTextColor = UIColor.label
@@ -29,6 +30,9 @@ public extension UIColor {
     
     public static let buttonCriticalBackground = errorColor
     public static let buttonCriticalSubtleBackground = errorColor.withAlphaComponent(0.5)
+    
+    public static let navBarPrimaryBackground = primaryColor
+    public static let navBarPrimaryForeground = colorOnPrimary
   }
 }
 
