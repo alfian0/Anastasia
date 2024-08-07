@@ -8,6 +8,13 @@
 import SwiftUI
 
 // MARK: https://medium.com/@askvasim/building-custom-chips-in-swiftui-a28ba65715a2
+struct ChipModel: Identifiable {
+  let id = UUID()
+  let type: Chips.ChipsType
+  let titleKey: LocalizedStringKey
+  @State var isSelected: Bool
+}
+
 public struct ChipContainerView: View {
   let models: [ChipModel]
   
@@ -22,7 +29,7 @@ public struct ChipContainerView: View {
       ZStack(alignment: .topLeading) {
         ForEach(models) { model in
           Chips(
-            systemName: model.systemImage,
+            type: model.type,
             text: model.titleKey,
             action: { isSelected in
               model.isSelected = isSelected
@@ -59,12 +66,12 @@ public struct ChipContainerView: View {
 struct ChipContainerView_Previews: PreviewProvider {
     static var previews: some View {
       ChipContainerView(models: [
-        ChipModel(systemImage: "airplane", titleKey: "airplane", isSelected: false),
-        ChipModel(systemImage: "heart", titleKey: "heart", isSelected: true),
-        ChipModel(systemImage: "square.and.arrow.up", titleKey: "share", isSelected: false),
-        ChipModel(systemImage: "square.and.arrow.up", titleKey: "share", isSelected: false),
-        ChipModel(systemImage: "heart", titleKey: "heart", isSelected: false),
-        ChipModel(systemImage: "airplane", titleKey: "airplane", isSelected: false)
+        ChipModel(type: .assist(systemName: "airplane"), titleKey: "airplane", isSelected: false),
+        ChipModel(type: .assist(systemName: "heart"), titleKey: "heart", isSelected: true),
+        ChipModel(type: .assist(systemName: "square.and.arrow.up"), titleKey: "share", isSelected: false),
+        ChipModel(type: .filter, titleKey: "share", isSelected: false),
+        ChipModel(type: .input, titleKey: "heart", isSelected: false),
+        ChipModel(type: .suggestion, titleKey: "airplane", isSelected: false)
       ])
     }
 }

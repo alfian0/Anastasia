@@ -7,26 +7,26 @@
 
 import SwiftUI
 
-struct ChipModel: Identifiable {
-  let id = UUID()
-  let systemImage: String
-  let titleKey: LocalizedStringKey
-  @State var isSelected: Bool
-}
-
 public struct Chips: View {
-  let systemName: String
+  let type: ChipsType
   let text: LocalizedStringKey
   let action: (Bool) -> Void
   @State var isSelected: Bool
   
+  enum ChipsType: Equatable {
+    case assist(systemName: String)
+    case filter
+    case input
+    case suggestion
+  }
+  
   init(
-    systemName: String,
+    type: ChipsType,
     text: LocalizedStringKey,
     action: @escaping (Bool) -> Void,
     isSelected: Bool = false
   ) {
-    self.systemName = systemName
+    self.type = type
     self.text = text
     self.isSelected = isSelected
     self.action = action
@@ -40,19 +40,37 @@ public struct Chips: View {
       ZStack {
         RoundedRectangle(cornerRadius: BorderRadius.medium, style: .continuous)
           .stroke(
-            Color(UIColor.systemGray4),
+            isSelected ? Color.Anastasia.buttonPrimaryBackground : Color(UIColor.systemGray4),
             lineWidth: BorderWidth.thin
           )
         
-        HStack {
-          Image(systemName: systemName)
-            .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
-          
-          Text(text)
-            .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+        HStack(spacing: Spacing.small) {
+          switch type {
+          case .assist(let systemName):
+            Image(systemName: systemName)
+              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+            
+            Text(text)
+              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+          case .filter:
+            Image(systemName: "checkmark")
+              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+            
+            Text(text)
+              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+          case .input:
+            Text(text)
+              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+            
+            Image(systemName: "xmark")
+              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+          default:
+            Text(text)
+              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+          }
         }
         .padding(.vertical, Spacing.medium)
-        .padding(.leading, Spacing.small)
+        .padding(.leading, (type == .suggestion ) ? Spacing.medium : Spacing.small)
         .padding(.trailing, Spacing.medium)
       }
       .fixedSize(horizontal: true, vertical: true)
@@ -66,8 +84,22 @@ public struct Chips: View {
 
 struct Chips_Previews: PreviewProvider {
     static var previews: some View {
-      Chips(systemName: "heart", text: "Hear") { _ in
+      VStack {
+        Chips(type: .assist(systemName: "heart"), text: "Hear") { _ in
+          
+        }
         
+        Chips(type: .input, text: "Hear") { _ in
+          
+        }
+        
+        Chips(type: .filter, text: "Hear") { _ in
+          
+        }
+        
+        Chips(type: .suggestion, text: "Hear") { _ in
+          
+        }
       }
     }
 }
