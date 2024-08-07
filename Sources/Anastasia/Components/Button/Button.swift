@@ -30,7 +30,7 @@ public struct AnastasiaButtonStyle: ButtonStyle {
   
   public func makeBody(configuration: Configuration) -> some View {
     configuration.label
-      .font(.body)
+      .font(.Anastasia.button)
       .padding(.vertical, verticalPadding)
       .padding(.horizontal, horizontalPadding)
       .background(
@@ -65,24 +65,32 @@ struct Button_Previews: PreviewProvider {
         Button {
 
         } label: {
-          Text("Primary Button")
-            .font(.Anastasia.body1.weight(.bold))
+          ButtonText(text: "Primary Button")
         }
         .buttonStyle(.anastasiaPrimary)
         
         Button {
 
         } label: {
-          Text("Secondary Button")
-            .font(.Anastasia.body1.weight(.bold))
+          HStack {
+            ButtonText(text: "Secondary Button")
+            
+            Image(systemName: "square.and.arrow.up")
+          }
         }
         .buttonStyle(.anastasiaSecondary)
         
         Button {
 
         } label: {
-          Text("Link Button")
-            .font(.Anastasia.body1.weight(.bold))
+          Image(systemName: "square.and.arrow.up")
+        }
+        .buttonStyle(.anastasiaSecondary)
+        
+        Button {
+
+        } label: {
+          ButtonText(text: "Link Button")
         }
         .buttonStyle(.anastasiaLink)
       }

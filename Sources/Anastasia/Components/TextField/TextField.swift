@@ -98,7 +98,7 @@ struct TextField_Previews: PreviewProvider {
   static var previews: some View {
     VStack(spacing: Spacing.extraLarge) {
       Text("Sign In")
-        .font(.Anastasia.display1)
+        .font(.Anastasia.headline2)
         .foregroundColor(.Anastasia.primaryTextColor)
       
       VStack {
@@ -114,8 +114,7 @@ struct TextField_Previews: PreviewProvider {
       
       VStack(alignment: .leading) {
         Toggle(isOn: .constant(true)) {
-          Text("I agree to the term and condition")
-            .font(.Anastasia.caption)
+          BodyText(type: .body2, text: "I agree to the term and condition")
             .foregroundColor(.Anastasia.secondaryTextColor)
         }
         .toggleStyle(.anastasiaCheckbox)
@@ -123,8 +122,7 @@ struct TextField_Previews: PreviewProvider {
         Button {
 
         } label: {
-          Text("Login")
-            .font(.Anastasia.body1.weight(.bold))
+          ButtonText(text: "Login")
             .frame(maxWidth: .infinity, maxHeight: 32)
         }
         .buttonStyle(.anastasiaPrimary)
@@ -132,8 +130,7 @@ struct TextField_Previews: PreviewProvider {
         Button {
 
         } label: {
-          Text("Register")
-            .font(.Anastasia.body1.weight(.bold))
+          ButtonText(text: "Register")
             .frame(maxWidth: .infinity, maxHeight: 32)
         }
         .buttonStyle(.anastasiaLink)
