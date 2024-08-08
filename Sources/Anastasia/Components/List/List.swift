@@ -163,9 +163,8 @@ public struct AnastasiaList<Suffix: View>: View {
         .scaledToFill()
         .frame(maxWidth: type.imageWidth, maxHeight: type.imageHeight)
         .clipped()
-        .background(
-          RoundedRectangle(cornerRadius: type.cornerRadius).fill(type.backgroundColor)
-        )
+        .cornerRadius(type.cornerRadius)
+        .background(type.backgroundColor)
       
       VStack(alignment: .leading, spacing: 0) {
         HeadlineText(type: .h6, text: lineType.title)
