@@ -13,7 +13,7 @@ public struct AnastasiaToggleStyle: ToggleStyle {
   private let isOffImage: String
   
   public init(
-    isOnImage: String = "checkmark.square",
+    isOnImage: String = "checkmark.square.fill",
     isOffImage: String = "square"
   ) {
     self.isOnImage = isOnImage
@@ -24,9 +24,10 @@ public struct AnastasiaToggleStyle: ToggleStyle {
     Button(action: {
       configuration.isOn.toggle()
     }, label: {
-      HStack(alignment: .top) {
+      HStack(alignment: .center) {
         Image(systemName: configuration.isOn ? isOnImage : isOffImage)
           .foregroundColor(.Anastasia.togglePrimaryBackground)
+          .frame(width: 24, height: 24)
         configuration.label
           .multilineTextAlignment(.leading)
       }
