@@ -57,7 +57,7 @@ public extension UIFont {
     static let headline3 = UIFont.roboto(.regular, size: FontScale.headline3.size)  ?? UIFont.systemFont(ofSize: FontScale.headline3.size, weight: .regular)
     static let headline4 = UIFont.roboto(.regular, size: FontScale.headline4.size)  ?? UIFont.systemFont(ofSize: FontScale.headline4.size, weight: .regular)
     static let headline5 = UIFont.roboto(.regular, size: FontScale.headline5.size)  ?? UIFont.systemFont(ofSize: FontScale.headline5.size, weight: .regular)
-    static let headline6 = UIFont.roboto(.regular, size: FontScale.headline6.size)  ?? UIFont.systemFont(ofSize: FontScale.headline6.size, weight: .regular)
+    static let headline6 = UIFont.roboto(.medium, size: FontScale.headline6.size)  ?? UIFont.systemFont(ofSize: FontScale.headline6.size, weight: .medium)
     
     // Subtitles are smaller than headlines. They are typically reserved for medium-emphasis text that is shorter in length. Serif or sans serif typefaces work well for subtitles.
     static let subtitle1 = UIFont.roboto(.regular, size: FontScale.subtitle1.size) ?? UIFont.systemFont(ofSize: FontScale.subtitle1.size, weight: .regular)

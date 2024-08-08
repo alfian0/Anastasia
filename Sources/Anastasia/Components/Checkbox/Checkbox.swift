@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+@MainActor
 public struct AnastasiaToggleStyle: ToggleStyle {
   private let isOnImage: String
   private let isOffImage: String
   
-  init(
+  public init(
     isOnImage: String = "checkmark.square",
     isOffImage: String = "square"
   ) {
@@ -35,7 +36,9 @@ public struct AnastasiaToggleStyle: ToggleStyle {
 }
 
 extension ToggleStyle where Self == AnastasiaToggleStyle {
+  @MainActor
   public static var anastasiaCheckbox: Self { Self() }
+  @MainActor
   public static var anastasiaRadioButton: Self { .init(isOnImage: "circle.circle.fill", isOffImage: "circle") }
 }
 

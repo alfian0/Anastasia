@@ -36,7 +36,7 @@ public extension UIColor {
     
     public static let imagePrimaryBackground = surfaceColor
     
-    public static let togglePrimaryBackground = primaryColor
+    public static let togglePrimaryBackground = accentColor
     
     public static let textPrimaryForeground = primaryTextColor
     public static let textSecondaryForeground = secondaryTextColor

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 public struct AnastasiaButtonStyle: ButtonStyle {
   private let foreground: Color
   private let background: Color
@@ -44,13 +45,16 @@ public struct AnastasiaButtonStyle: ButtonStyle {
 }
 
 extension ButtonStyle where Self == AnastasiaButtonStyle {
+  @MainActor
   public static var anastasiaPrimary: Self { Self() }
+  @MainActor
   public static var anastasiaSecondary: Self {
     AnastasiaButtonStyle(
       foreground: Color.Anastasia.buttonSecondaryForeground,
       background: Color.Anastasia.buttonSecondaryBackground
     )
   }
+  @MainActor
   public static var anastasiaLink: Self {
     AnastasiaButtonStyle(
       foreground: Color.Anastasia.buttonLinkSecondaryForeground,

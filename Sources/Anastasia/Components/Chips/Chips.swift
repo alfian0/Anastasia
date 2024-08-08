@@ -7,40 +7,43 @@
 
 import SwiftUI
 
+@MainActor
 public struct Chips: View {
   let type: ChipsType
   let text: LocalizedStringKey
-  let action: (Bool) -> Void
-  @State var isSelected: Bool
+  let tintColor: Color
+  @Binding var isSelected: Bool
+  let action: (() -> Void)?
   
-  enum ChipsType: Equatable {
+  public enum ChipsType: Equatable {
     case assist(systemName: String)
     case filter
     case input
     case suggestion
   }
   
-  init(
+  public init(
     type: ChipsType,
     text: LocalizedStringKey,
-    action: @escaping (Bool) -> Void,
-    isSelected: Bool = false
+    tintColor: Color = Color.Anastasia.togglePrimaryBackground,
+    isSelected: Binding<Bool>,
+    action: (() -> Void)? = nil
   ) {
     self.type = type
     self.text = text
-    self.isSelected = isSelected
+    self.tintColor = tintColor
+    self._isSelected = isSelected
     self.action = action
   }
   
   public var body: some View {
     Button {
-      isSelected.toggle()
-      action(isSelected)
+      action?()
     } label: {
       ZStack {
         RoundedRectangle(cornerRadius: BorderRadius.medium, style: .continuous)
           .stroke(
-            isSelected ? Color.Anastasia.buttonPrimaryBackground : Color(UIColor.systemGray4),
+            isSelected ? tintColor : Color(UIColor.systemGray4),
             lineWidth: BorderWidth.thin
           )
         
@@ -48,25 +51,25 @@ public struct Chips: View {
           switch type {
           case .assist(let systemName):
             Image(systemName: systemName)
-              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+              .foregroundColor(isSelected ? Color.white : tintColor)
             
             ButtonText(text: text)
-              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+              .foregroundColor(isSelected ? Color.white : tintColor)
           case .filter:
             Image(systemName: "checkmark")
-              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+              .foregroundColor(isSelected ? Color.white : tintColor)
             
             ButtonText(text: text)
-              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+              .foregroundColor(isSelected ? Color.white : tintColor)
           case .input:
             ButtonText(text: text)
-              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+              .foregroundColor(isSelected ? Color.white : tintColor)
             
             Image(systemName: "xmark")
-              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+              .foregroundColor(isSelected ? Color.white : tintColor)
           default:
             ButtonText(text: text)
-              .foregroundColor(isSelected ? Color.white : Color.Anastasia.buttonPrimaryBackground)
+              .foregroundColor(isSelected ? Color.white : tintColor)
           }
         }
         .padding(.vertical, Spacing.medium)
@@ -77,29 +80,18 @@ public struct Chips: View {
     }
     .background(
       RoundedRectangle(cornerRadius: Spacing.medium)
-        .fill(isSelected ? Color.Anastasia.buttonPrimaryBackground : Color.white)
+        .fill(isSelected ? tintColor : Color.white)
     )
   }
 }
 
 struct Chips_Previews: PreviewProvider {
-    static var previews: some View {
-      VStack {
-        Chips(type: .assist(systemName: "heart"), text: "Heart") { _ in
-          
-        }
-        
-        Chips(type: .input, text: "Heart") { _ in
-          
-        }
-        
-        Chips(type: .filter, text: "Heart") { _ in
-          
-        }
-        
-        Chips(type: .suggestion, text: "Heart") { _ in
-          
-        }
-      }
+  static var previews: some View {
+    VStack {
+      Chips(type: .assist(systemName: "heart"), text: "Heart", isSelected: .constant(true))
+      Chips(type: .input, text: "Heart", isSelected: .constant(false))
+      Chips(type: .filter, text: "Heart", isSelected: .constant(false))
+      Chips(type: .suggestion, text: "Heart", isSelected: .constant(false))
     }
+  }
 }

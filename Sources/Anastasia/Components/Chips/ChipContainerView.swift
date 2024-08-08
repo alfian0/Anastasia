@@ -8,17 +8,28 @@
 import SwiftUI
 
 // MARK: https://medium.com/@askvasim/building-custom-chips-in-swiftui-a28ba65715a2
-struct ChipModel: Identifiable {
-  let id = UUID()
-  let type: Chips.ChipsType
-  let titleKey: LocalizedStringKey
-  @State var isSelected: Bool
+public struct ChipModel: Identifiable {
+  public let id = UUID()
+  public let type: Chips.ChipsType
+  public let titleKey: LocalizedStringKey
+  @State public var isSelected: Bool
+  
+  public init(
+    type: Chips.ChipsType,
+    titleKey: LocalizedStringKey,
+    isSelected: State<Bool>
+  ) {
+    self.type = type
+    self.titleKey = titleKey
+    self._isSelected = isSelected
+  }
 }
 
+@MainActor
 public struct ChipContainerView: View {
   let models: [ChipModel]
   
-  init(models: [ChipModel]) {
+  public init(models: [ChipModel]) {
     self.models = models
   }
   
@@ -31,11 +42,10 @@ public struct ChipContainerView: View {
           Chips(
             type: model.type,
             text: model.titleKey,
-            action: { isSelected in
-              model.isSelected = isSelected
-            },
-            isSelected: model.isSelected
-          )
+            isSelected: model.$isSelected
+          ) {
+            model.isSelected.toggle()
+          }
           .padding(.all, Spacing.small)
             .alignmentGuide(.leading) { dimension in
                 if (abs(width - dimension.width) > geo.size.width) {
@@ -59,20 +69,22 @@ public struct ChipContainerView: View {
             }
         }
       }
-      .fixedSize(horizontal: true, vertical: true)
     }
   }
 }
 
 struct ChipContainerView_Previews: PreviewProvider {
     static var previews: some View {
-      ChipContainerView(models: [
-        ChipModel(type: .assist(systemName: "airplane"), titleKey: "airplane", isSelected: false),
-        ChipModel(type: .assist(systemName: "heart"), titleKey: "heart", isSelected: true),
-        ChipModel(type: .assist(systemName: "square.and.arrow.up"), titleKey: "share", isSelected: false),
-        ChipModel(type: .filter, titleKey: "share", isSelected: false),
-        ChipModel(type: .input, titleKey: "heart", isSelected: false),
-        ChipModel(type: .suggestion, titleKey: "airplane", isSelected: false)
-      ])
+      VStack {
+        ChipContainerView(models: [
+          ChipModel(type: .assist(systemName: "airplane"), titleKey: "airplane", isSelected: .init(initialValue: false)),
+          ChipModel(type: .assist(systemName: "heart"), titleKey: "heart", isSelected: .init(initialValue: true)),
+          ChipModel(type: .assist(systemName: "square.and.arrow.up"), titleKey: "share", isSelected: .init(initialValue: false)),
+          ChipModel(type: .filter, titleKey: "share", isSelected: .init(initialValue: false)),
+          ChipModel(type: .input, titleKey: "heart", isSelected: .init(initialValue: false)),
+          ChipModel(type: .suggestion, titleKey: "airplane", isSelected: .init(initialValue: false))
+        ])
+      }
+      .background(Color(.systemGray6))
     }
 }

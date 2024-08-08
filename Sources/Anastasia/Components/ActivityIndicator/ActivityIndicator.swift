@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 
 @available(iOS, deprecated: 14, message: "Use ProgressView instead")
+@MainActor
 public struct ActivityIndicator: UIViewRepresentable {
   @Binding var isAnimating: Bool
 

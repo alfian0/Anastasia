@@ -7,13 +7,14 @@
 
 import SwiftUI
 
+@MainActor
 public struct AnastasiaSecureField: View {
   private let title: String
   @Binding private var text: String
   @State private var isSecured: Bool
   private let prefix: Image
   
-  init(
+  public init(
     _ title: String,
     text: Binding<String>,
     isSecured: Bool = true,
@@ -61,7 +62,7 @@ public struct AnastasiaTextFieldStyle<Prefix: View, Suffix: View>: TextFieldStyl
   @ViewBuilder private let prefix: Prefix
   @ViewBuilder private let suffix: Suffix
   
-  init(
+  public init(
     keyboardType: UIKeyboardType = .default,
     prefix: Prefix = EmptyView(),
     suffix: Suffix = EmptyView()
@@ -72,24 +73,23 @@ public struct AnastasiaTextFieldStyle<Prefix: View, Suffix: View>: TextFieldStyl
   }
   
   public func _body(configuration: TextField<Self._Label>) -> some View {
-    ZStack {
+    HStack {
+      prefix
+        .foregroundColor(.Anastasia.textPrimaryForeground)
+      configuration
+        .keyboardType(keyboardType)
+      suffix
+        .foregroundColor(.Anastasia.textPrimaryForeground)
+    }
+    .padding(.vertical, Spacing.medium)
+    .padding(.horizontal, Spacing.large)
+    .background(
       RoundedRectangle(cornerRadius: BorderRadius.medium, style: .continuous)
         .stroke(
           Color(UIColor.systemGray4),
           lineWidth: BorderWidth.thin
         )
-      
-      HStack {
-        prefix
-          .foregroundColor(.Anastasia.textPrimaryForeground)
-        configuration
-          .keyboardType(keyboardType)
-        suffix
-          .foregroundColor(.Anastasia.textPrimaryForeground)
-      }
-      .padding(.vertical, Spacing.medium)
-      .padding(.horizontal, Spacing.large)
-    }
+    )
     .frame(height: 44)
   }
 }

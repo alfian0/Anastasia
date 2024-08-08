@@ -73,9 +73,9 @@ struct Sample_Previews: PreviewProvider {
         BodyText(type: .body1(scale: .large), text: "In publishing and graphic design, Lorem ipsum (/ˌlɔː.rəm ˈɪp.səm/) is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.")
         
         ChipContainerView(models: [
-          ChipModel(type: .assist(systemName: "airplane"), titleKey: "airplane", isSelected: false),
-          ChipModel(type: .filter, titleKey: "share", isSelected: false),
-          ChipModel(type: .input, titleKey: "heart", isSelected: false)
+          ChipModel(type: .assist(systemName: "airplane"), titleKey: "airplane", isSelected: .init(initialValue: true)),
+          ChipModel(type: .filter, titleKey: "share", isSelected: .init(initialValue: false)),
+          ChipModel(type: .input, titleKey: "heart", isSelected: .init(initialValue: false))
         ])
         
         Button {
