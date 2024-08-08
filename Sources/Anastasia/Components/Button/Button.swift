@@ -80,6 +80,9 @@ struct Button_Previews: PreviewProvider {
             ButtonText(text: "Secondary Button")
             
             Image(systemName: "square.and.arrow.up")
+              .resizable()
+              .scaledToFit()
+              .frame(width: 18, height: 18)
           }
         }
         .buttonStyle(.anastasiaSecondary)

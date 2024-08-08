@@ -77,6 +77,7 @@ public struct AnastasiaTextFieldStyle<Prefix: View, Suffix: View>: TextFieldStyl
       prefix
         .foregroundColor(.Anastasia.textPrimaryForeground)
       configuration
+        .frame(height: 32)
         .keyboardType(keyboardType)
       suffix
         .foregroundColor(.Anastasia.textPrimaryForeground)
@@ -90,7 +91,6 @@ public struct AnastasiaTextFieldStyle<Prefix: View, Suffix: View>: TextFieldStyl
           lineWidth: BorderWidth.thin
         )
     )
-    .frame(height: 44)
   }
 }
 

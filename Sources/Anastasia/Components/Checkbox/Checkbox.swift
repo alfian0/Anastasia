@@ -26,8 +26,10 @@ public struct AnastasiaToggleStyle: ToggleStyle {
     }, label: {
       HStack(alignment: .center) {
         Image(systemName: configuration.isOn ? isOnImage : isOffImage)
-          .foregroundColor(.Anastasia.togglePrimaryBackground)
+          .resizable()
+          .scaledToFit()
           .frame(width: 24, height: 24)
+          .foregroundColor(.Anastasia.togglePrimaryBackground)
         configuration.label
           .multilineTextAlignment(.leading)
       }

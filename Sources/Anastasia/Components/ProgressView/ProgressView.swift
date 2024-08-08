@@ -7,10 +7,10 @@
 
 import SwiftUI
 
+// MARK: https://www.kodeco.com/books/swiftui-cookbook/v1.0/chapters/9-create-a-custom-progress-view-in-swiftui
 public struct AnastasiaProgressView: View {
   let progress: CGFloat
   
-
   public var body: some View {
     GeometryReader { geometry in
       ZStack(alignment: .leading) {

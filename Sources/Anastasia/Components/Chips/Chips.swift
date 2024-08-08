@@ -51,12 +51,18 @@ public struct Chips: View {
           switch type {
           case .assist(let systemName):
             Image(systemName: systemName)
+              .resizable()
+              .scaledToFit()
+              .frame(width: 12, height: 12)
               .foregroundColor(isSelected ? Color.white : tintColor)
             
             ButtonText(text: text)
               .foregroundColor(isSelected ? Color.white : tintColor)
           case .filter:
             Image(systemName: "checkmark")
+              .resizable()
+              .scaledToFit()
+              .frame(width: 12, height: 12)
               .foregroundColor(isSelected ? Color.white : tintColor)
             
             ButtonText(text: text)
@@ -66,6 +72,9 @@ public struct Chips: View {
               .foregroundColor(isSelected ? Color.white : tintColor)
             
             Image(systemName: "xmark")
+              .resizable()
+              .scaledToFit()
+              .frame(width: 12, height: 12)
               .foregroundColor(isSelected ? Color.white : tintColor)
           default:
             ButtonText(text: text)

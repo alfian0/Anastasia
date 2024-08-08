@@ -40,7 +40,9 @@ struct GroupBox_Previews: PreviewProvider {
       }, content: {
         VStack(spacing: Spacing.medium) {
           HStack(alignment: .center) {
-            Image(systemName: "music")
+            Image("avatartion", bundle: .module)
+              .resizable()
+              .scaledToFit()
               .frame(maxWidth: 40, maxHeight: 40)
               .background(
                 RoundedRectangle(cornerRadius: Spacing.medium).fill(Color.gray)

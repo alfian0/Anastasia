@@ -59,7 +59,7 @@ public enum ListType {
     case .smallImage:
       return 56
     case .largeImage:
-      return .infinity
+      return 64*2
     default:
       return .zero
     }
@@ -159,6 +159,8 @@ public struct AnastasiaList<Suffix: View>: View {
   public var body: some View {
     HStack(alignment: type.verticalAlignment , spacing: Spacing.large) {
       type.image?
+        .resizable()
+        .aspectRatio(type.imageWidth/type.imageHeight, contentMode: .fill)
         .frame(maxWidth: type.imageWidth, maxHeight: type.imageHeight)
         .background(
           RoundedRectangle(cornerRadius: type.cornerRadius).fill(type.backgroundColor)
@@ -192,9 +194,9 @@ struct OneLineList_Previews: PreviewProvider {
             .toggleStyle(.anastasiaCheckbox)
         }
         AnastasiaList(type: .icon(systemName: "paperplane"), lineType: .twoline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines"))
-        AnastasiaList(type: .avatar(image: Image(systemName: "person")), lineType: .twoline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines")) { OverlineText(text: "100+") }
-        AnastasiaList(type: .smallImage(image: Image(systemName: "person")), lineType: .threeline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines")) { OverlineText(text: "100+") }
-        AnastasiaList(type: .largeImage(image: Image(systemName: "person")), lineType: .threeline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines"))
+        AnastasiaList(type: .avatar(image: Image("avatartion-4", bundle: .module)), lineType: .twoline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines")) { OverlineText(text: "100+") }
+        AnastasiaList(type: .smallImage(image: Image("avatartion", bundle: .module)), lineType: .threeline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines")) { OverlineText(text: "100+") }
+        AnastasiaList(type: .largeImage(image: Image("avatartion-3", bundle: .module)), lineType: .threeline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines"))
       }
       .listStyle(.plain)
     }
