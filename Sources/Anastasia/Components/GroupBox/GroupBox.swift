@@ -9,7 +9,7 @@ import SwiftUI
 
 @available(iOS, deprecated: 14, message: "Use ProgressView instead")
 @MainActor
-public struct GroupBox<Label: View, Content: View>: View {
+public struct AnastasiaGroupBox<Label: View, Content: View>: View {
   @ViewBuilder let label: () -> Label
   @ViewBuilder let content: () -> Content
   
@@ -19,7 +19,7 @@ public struct GroupBox<Label: View, Content: View>: View {
   }
   
   public var body: some View {
-    VStack(alignment: .leading, spacing: Spacing.medium) {
+    VStack(alignment: .leading, spacing: Spacing.large) {
       label()
       
       content()
@@ -31,18 +31,59 @@ public struct GroupBox<Label: View, Content: View>: View {
 struct GroupBox_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      GroupBox(label: {
+      AnastasiaGroupBox(label: {
         HStack {
-          Image(systemName: "bookmark.fill")
+          Image(systemName: "music.note.list")
           
-          HeadlineText(type: .h6, text: "Headline 6")
+          HeadlineText(type: .h6, text: "Now Playing")
         }
       }, content: {
-        BodyText(type: .body1(scale: .small), text: "In publishing and graphic design, Lorem ipsum (/ˌlɔː.rəm ˈɪp.səm/) is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.")
+        VStack(spacing: Spacing.medium) {
+          HStack(alignment: .center) {
+            Image(systemName: "music")
+              .frame(maxWidth: 40, maxHeight: 40)
+              .background(
+                RoundedRectangle(cornerRadius: Spacing.medium).fill(Color.gray)
+              )
+            
+            VStack(alignment: .leading, spacing: Spacing.small) {
+              HeadlineText(type: .h6, text: "Cool song title")
+              SubtitleText(type: .subtitle1, text: "Artist Name")
+            }
+            
+            Spacer()
+          }
+          
+          AnastasiaProgressView(progress: 0.2)
+            .frame(height: 10)
+          
+          HStack {
+            Button {
+
+            } label: {
+              Image(systemName: "backward.fill")
+            }
+            .buttonStyle(.anastasiaSecondary)
+            
+            Button {
+
+            } label: {
+              Image(systemName: "pause.fill")
+            }
+            .buttonStyle(.anastasiaSecondary)
+            
+            Button {
+
+            } label: {
+              Image(systemName: "forward.fill")
+            }
+            .buttonStyle(.anastasiaSecondary)
+          }
+        }
       })
       .modifier(FilledBackground())
       
-      GroupBox(label: {
+      AnastasiaGroupBox(label: {
         HStack {
           Image(systemName: "sunset.fill")
           
@@ -53,15 +94,34 @@ struct GroupBox_Previews: PreviewProvider {
       })
       .modifier(OutlinedBackground())
       
-      GroupBox(label: {
-        HStack {
-          Image(systemName: "music.quarternote.3")
-          
+      VStack(alignment: .leading) {
+        Image(systemName: "person")
+          .frame(maxWidth: .infinity, maxHeight: 140)
+          .background(Color(UIColor.systemGray6))
+        VStack(alignment: .leading, spacing: Spacing.medium) {
           HeadlineText(type: .h6, text: "Headline 6")
+          SubtitleText(type: .subtitle1, text: "Supporting Subtitle 1 Text")
+          BodyText(type: .body2(scale: .large), text: "In publishing and graphic design, Lorem ipsum (/ˌlɔː.rəm ˈɪp.səm/) is a placeholder")
+          Divider()
+          HStack {
+            Spacer()
+            Button {
+
+            } label: {
+              ButtonText(text: "Action")
+            }
+            .buttonStyle(.anastasiaSecondary)
+            
+            Button {
+
+            } label: {
+              ButtonText(text: "Action")
+            }
+            .buttonStyle(.anastasiaPrimary)
+          }
         }
-      }, content: {
-        BodyText(type: .body1(scale: .large), text: "In publishing and graphic design, Lorem ipsum (/ˌlɔː.rəm ˈɪp.səm/) is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.")
-      })
+        .padding(Spacing.medium)
+      }
       .modifier(ElevatedBackground())
     }
     .padding()

@@ -10,7 +10,7 @@ import SwiftUI
 
 @available(iOS, deprecated: 14, message: "Use ProgressView instead")
 @MainActor
-public struct ActivityIndicator: UIViewRepresentable {
+public struct AnastasiaActivityIndicator: UIViewRepresentable {
   @Binding var isAnimating: Bool
 
   public init(isAnimating: Binding<Bool>) {
@@ -35,7 +35,7 @@ public struct ActivityIndicator: UIViewRepresentable {
 struct ActivityIndicator_Previews: PreviewProvider {
     static var previews: some View {
       VStack {
-        ActivityIndicator(isAnimating: .constant(true))
+        AnastasiaActivityIndicator(isAnimating: .constant(true))
       }
       .previewLayout(.sizeThatFits)
     }

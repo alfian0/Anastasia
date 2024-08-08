@@ -191,6 +191,7 @@ struct OneLineList_Previews: PreviewProvider {
             Toggle(isOn: .constant(true)) {}
             .toggleStyle(.anastasiaCheckbox)
         }
+        AnastasiaList(type: .icon(systemName: "paperplane"), lineType: .twoline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines"))
         AnastasiaList(type: .avatar(image: Image(systemName: "person")), lineType: .twoline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines")) { OverlineText(text: "100+") }
         AnastasiaList(type: .smallImage(image: Image(systemName: "person")), lineType: .threeline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines")) { OverlineText(text: "100+") }
         AnastasiaList(type: .largeImage(image: Image(systemName: "person")), lineType: .threeline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines"))
