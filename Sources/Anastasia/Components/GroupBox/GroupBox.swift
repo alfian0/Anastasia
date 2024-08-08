@@ -42,8 +42,9 @@ struct GroupBox_Previews: PreviewProvider {
           HStack(alignment: .center) {
             Image("avatartion", bundle: .module)
               .resizable()
-              .scaledToFit()
+              .scaledToFill()
               .frame(maxWidth: 40, maxHeight: 40)
+              .clipped()
               .background(
                 RoundedRectangle(cornerRadius: Spacing.medium).fill(Color.gray)
               )

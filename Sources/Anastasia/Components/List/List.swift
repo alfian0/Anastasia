@@ -160,8 +160,9 @@ public struct AnastasiaList<Suffix: View>: View {
     HStack(alignment: type.verticalAlignment , spacing: Spacing.large) {
       type.image?
         .resizable()
-        .aspectRatio(type.imageWidth/type.imageHeight, contentMode: .fill)
+        .scaledToFill()
         .frame(maxWidth: type.imageWidth, maxHeight: type.imageHeight)
+        .clipped()
         .background(
           RoundedRectangle(cornerRadius: type.cornerRadius).fill(type.backgroundColor)
         )
@@ -196,7 +197,7 @@ struct OneLineList_Previews: PreviewProvider {
         AnastasiaList(type: .icon(systemName: "paperplane"), lineType: .twoline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines"))
         AnastasiaList(type: .avatar(image: Image("avatartion-4", bundle: .module)), lineType: .twoline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines")) { OverlineText(text: "100+") }
         AnastasiaList(type: .smallImage(image: Image("avatartion", bundle: .module)), lineType: .threeline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines")) { OverlineText(text: "100+") }
-        AnastasiaList(type: .largeImage(image: Image("avatartion-3", bundle: .module)), lineType: .threeline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines"))
+        AnastasiaList(type: .largeImage(image: Image("abstract", bundle: .module)), lineType: .threeline(title: "Headline", subtitle: "Supporting Text that is long enough to fill up multiple lines"))
       }
       .listStyle(.plain)
     }
